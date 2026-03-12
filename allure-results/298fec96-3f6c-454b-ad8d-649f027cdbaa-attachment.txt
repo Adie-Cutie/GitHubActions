@@ -1,0 +1,7 @@
+[
+  [ 'Name', 'CPU', 'Disk', 'Memory', 'Network' ],
+  [ 'Firefox', '1.7%', '0.5 MB/s', '84.3 MB', '7.3 Mbps' ],
+  [ 'System', '8.6%', '0.5 MB/s', '48.2 MB', '2.5 Mbps' ],
+  [ 'Chrome', '2.5%', '0.9 MB/s', '40.1 MB', '5.5 Mbps' ],
+  [ 'Internet Explorer', '6.1%', '0.9 MB/s', '34.2 MB', '7.4 Mbps' ]
+]

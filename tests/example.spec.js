@@ -72,15 +72,15 @@ test('checking the hidden layers', async ({ page }) => {
 // });
 // -------------------------------------------------------------------------------------
 
-// async function simpleWay(page) {
-//   const rows = await page.getByRole("row").all();
-//   const tableData = [];
-//   for (const row of rows) {
-//     const rowValues = await row.locator('[role="cell"], [role="columnheader"]').allTextContents();
-//     if (rowValues.length > 0) tableData.push(rowValues);
-//   }
-//   return tableData;
-// }
+async function simpleWay(page) {
+  const rows = await page.getByRole("row").all();
+  const tableData = [];
+  for (const row of rows) {
+    const rowValues = await row.locator('[role="cell"], [role="columnheader"]').allTextContents();
+    if (rowValues.length > 0) tableData.push(rowValues);
+  }
+  return tableData;
+}
 // ------------------------------------------------------------------------------------
 
 async function betterWay(page) {
@@ -91,16 +91,15 @@ async function betterWay(page) {
   })
   );
 }
-test.skip('checking the dynamic table', async ({ page }) => {
-  await page.goto(url);
-  await page.click('text=Dynamic Table');
-  const tableData = await betterWay(page);
-  console.log(tableData);
-  // const header = tableData[0];
-  // const cpuIndex = header.findIndex(h => h.trim() === 'CPU');
-  // const chromeRow = tableData.find(row => row[0].trim() === 'Chrome');
-  // const chromeCPU = chromeRow ? chromeRow[cpuIndex].trim() : null;
-  // const txt = (await page.locator('.bg-warning').textContent())?.trim();
-  // expect(txt).toContain(chromeCPU);
+test('checking the dynamic table', async ({ page }) => {
+  await page.goto('http://www.uitestingplayground.com/dynamicTable');
+  // await page.click('text=Dynamic Table');
+  const tableData = await simpleWay(page);
+  const header = tableData[0];
+  const cpuIndex = header.findIndex(h => h.trim() === 'CPU');
+  const chromeRow = tableData.find(row => row[0].trim() === 'Chrome');
+  const chromeCPU = chromeRow ? chromeRow[cpuIndex].trim() : null;
+  const txt = (await page.locator('.bg-warning').textContent())?.trim();
+  expect(txt).toContain(chromeCPU);
 });
 
