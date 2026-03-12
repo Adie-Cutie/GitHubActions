@@ -1,0 +1,11 @@
+npm init playwright@latest
+npx playwright test --project-chromium --headed --workers=4
+npm install -D allure-playwright allure-commandline //install allure package
+configure the config.js --add reporter ['allure-playwright']
+
+// Very Important command
+npx allure generate allure-results -o allure-report --clean
+
+//Open report on localhost web server http://127.0.0.1:50331
+npx allure open allure-report
+
