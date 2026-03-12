@@ -91,6 +91,7 @@ async function betterWay(page) {
   })
   );
 }
+
 test('checking the dynamic table', async ({ page }) => {
   await page.goto('http://www.uitestingplayground.com/dynamicTable');
   // await page.click('text=Dynamic Table');
